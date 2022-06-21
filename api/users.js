@@ -25,17 +25,18 @@ router.delete('/users/:id', (req, res, next) => {
 
 router.route('/users/:user').post(function (req, res) {
   User.findOne({ mobile_number: req.params.user }, function (err, user) {
-    if (!user) return next(new Error('Unable To Find Employee With This Id'));
-    else user.messages = req.body.messages;
-    console.log(user);
-    user
-      .save()
-      .then((emp) => {
-        res.json('Employee Updated Successfully');
-      })
-      .catch((err) => {
-        res.status(400).send('Unable To Update Employee');
-      });
+    if (user) {
+      user.messages = req.body.messages;
+      console.log(user);
+      user
+        .save()
+        .then((emp) => {
+          res.json('Employee Updated Successfully');
+        })
+        .catch((err) => {
+          res.status(400).send('Unable To Update Employee');
+        });
+    }
   });
 });
 
