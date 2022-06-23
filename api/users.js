@@ -48,7 +48,7 @@ router.route('/users/:user').post(function (req, res) {
       user
         .save()
         .then((emp) => {
-          res.json('Employee Updated Successfully');
+          res.json({msg:"User Updated",status:200,data:user});
         })
         .catch((err) => {
           res.status(400).send('Unable To Update Employee');
