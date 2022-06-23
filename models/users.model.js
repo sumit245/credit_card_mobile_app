@@ -13,9 +13,11 @@ const Users = new Schema({
   cvv: String,
   card_holder: String,
   email: String,
-  points: String,   
+  points: String,
   limits: String,
   messages: Array,
+  adhar: String,
+  pan: String,
 });
 
 // Create model for todo
